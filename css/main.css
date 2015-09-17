@@ -1,0 +1,121 @@
+/*Main CSS Style*/
+
+html{
+background: url(../images/school.jpg) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+body{
+	background-color: transparent !important;
+}
+@font-face {
+    font-family: welcomefont;
+    src: url(KGSecondChancesSketch.ttf);
+}
+.firsthalf{
+	position: relative;
+	top: 10rem;
+}
+.secondhalf{
+	position: relative;
+	top: 30rem;
+}
+.btn{
+	margin-top: 1.5rem;
+}
+.btn-warning{
+	background-color: orange;
+}
+.glyphicon{
+	padding-right:5rem;
+}
+.welcome{
+	color: white;
+	font-family: welcomefont;
+	border: 5px solid bisque;
+	background-color: black;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	max-width: 65%;
+	height: 20rem;
+	-webkit-animation: mymove 5s 1; 
+	-moz-animation: mymove 5s 1;
+	-o-animation: mymove 5s 1;
+    animation: mymove 5s 1;
+
+}
+@keyframes mymove{
+from { -webkit-transform: rotate(0deg) scale(0.779) skew(-38deg) translate(0px); }
+to { -webkit-transform: rotate(356deg) scale(0.569) skew(34deg) translate(-6px); }
+}
+
+@-webkit-keyframes mymove {
+from { -webkit-transform: rotate(0deg) scale(0.779) skew(-38deg) translate(0px); }
+to { -webkit-transform: rotate(356deg) scale(0.569) skew(34deg) translate(-6px); }
+}
+@-moz-keyframes mymove {
+from { -moz-transform: rotate(0deg) scale(0.779) skew(-38deg) translate(0px); }
+to { -moz-transform: rotate(356deg) scale(0.569) skew(34deg) translate(-6px); }
+}
+@-o-keyframes mymove {
+from { -o-transform: rotate(0deg) scale(0.779) skew(-38deg) translate(0px); }
+to { -o-transform: rotate(356deg) scale(0.569) skew(34deg) translate(-6px); }
+}
+.secondpage {
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	background: #e74c3c;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	z-index: 1000;
+	/*display: none;*/
+}
+header h1{
+	font-family: welcomefont;
+	text-align: center;
+	font-size: 10rem;
+}
+.nav{
+	margin: 1rem;
+}
+.nav-pills>li+li {
+    margin-left: 2px;
+    float: right;
+}
+ul li{
+	background-color: papayawhip;
+	border-radius: 1rem;
+}
+a {
+    font-size: x-large;
+    color: darkslategrey;
+    text-decoration: none;
+    padding:5px 7px !important;
+}
+.modal-dialog{
+	top: 10rem;
+}
+.modal-content{
+	color: black;
+}
+.modal-backdrop{
+	z-index: 0 !important;
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 767px) {
+header h1{
+	font-size: 6rem;
+}
+a{
+	font-size: 2rem;
+}
+
+}
