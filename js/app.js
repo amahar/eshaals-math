@@ -59,24 +59,30 @@ function randNum1To5(){
 
 
 $('button').on('click', function(){
+
+		score = 0;
+		
 		var getQuestion = question(randNum1To5(),randNum1To5())
 		corAns = getQuestion.add;
 		var finalAnswer = new Answer(corAns);
 		$('.questions').append(getQuestion.getNumbs());
 		$('#answers').text(finalAnswer.runAnswer());
-});
-score = 0;
+
 $(document).on("click",".btn.btn-default",function(){
 	var userInput = ($(this).attr('value'));
 	if(userInput == corAns){
 		score += 1;
 		$('.btn.btn-success').text(score);
+		//$('.modal').toggle();
+	
 	} else {
 		alert("incorrect anwer");
+		return false;
 	}
+
 });
 
-
+});
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex ;
 

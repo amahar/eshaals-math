@@ -90,9 +90,9 @@ header h1{
     float: right;
 }
 ul li{
-	background-color: papayawhip;
-	border-radius: 1rem;
+	display: inline-block;
 }
+
 a {
     font-size: x-large;
     color: darkslategrey;
