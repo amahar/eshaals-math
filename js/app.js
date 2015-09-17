@@ -46,7 +46,7 @@ Answer.prototype.runAnswer = function(){
 	console.log(arr)
 	var i = 0;						
 	while(i < arr.length){
-	  $('.rtnAnswers').append('<li><form id = "myForm"><input class="btn btn-default" type="submit" value= '+arr[i]+'></form></li>');
+	  $('.rtnAnswers').append('<li><input class="btn btn-default" type="submit" value= '+arr[i]+'></li>');
 	  i++;
 	}
 }
@@ -65,9 +65,15 @@ $('button').on('click', function(){
 		$('.questions').append(getQuestion.getNumbs());
 		$('#answers').text(finalAnswer.runAnswer());
 });
-
-$(document).on("submit","#myForm",function(){
-	alert($("#myForm").attr('value'));
+score = 0;
+$(document).on("click",".btn.btn-default",function(){
+	var userInput = ($(this).attr('value'));
+	if(userInput == corAns){
+		score += 1;
+		$('.btn.btn-success').text(score);
+	} else {
+		alert("incorrect anwer");
+	}
 });
 
 
