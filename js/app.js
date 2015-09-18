@@ -58,16 +58,14 @@ function randNum1To5(){
 }
 
 
-$('button').on('click', function(){
-
-		score = 0;
-		
+$('.btn.btn-primary').on('click', function(){
 		var getQuestion = question(randNum1To5(),randNum1To5())
 		corAns = getQuestion.add;
 		var finalAnswer = new Answer(corAns);
 		$('.questions').append(getQuestion.getNumbs());
 		$('#answers').text(finalAnswer.runAnswer());
-
+});
+	score = 0;
 $(document).on("click",".btn.btn-default",function(){
 	var userInput = ($(this).attr('value'));
 	if(userInput == corAns){
@@ -77,12 +75,11 @@ $(document).on("click",".btn.btn-default",function(){
 	
 	} else {
 		alert("incorrect anwer");
-		return false;
 	}
 
 });
 
-});
+
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex ;
 
