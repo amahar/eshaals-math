@@ -1,7 +1,50 @@
 $(document).ready(function(){
 
-function question(numb1,numb2){
+// initilize variables
+score = 0;
+counter = 0;	
 
+// on click give me 2 questions:
+$('.btn.btn-primary').on('click', function(){
+	newFunction();
+});
+
+// run two different classes to get random questions and its answers in each instance
+function newFunction(){
+	checkIfFinish();
+	$('.modal').modal('show');
+	var getQuestion = question(randNum1To5(),randNum1To5())
+	corAns = getQuestion.add;
+	var finalAnswer = new Answer(corAns);	
+	$('.questions').append(getQuestion.getNumbs());
+	$('#answers').text(finalAnswer.runAnswer());
+}
+
+// retrieve answers from button values
+$(document).on("click",".btn.btn-default",function(event){
+	event.preventDefault();
+	counter += 1;
+	var userInput = ($(this).attr('value'));
+		if(userInput == corAns){
+			score += 1;
+			$('.btn.btn-success').text(score);
+		} else {
+			alert("incorrect anwer");
+		}	
+	newFunction();
+});
+
+// Keep per game to 3 rounds and give user its total score
+function checkIfFinish(){
+	if (counter == 3) {
+	alert("your final score is"+score+" ! Click Start play again");
+	$('.modal').modal('hide');
+	return false;
+	}
+}
+
+// factory function object to get to randoms numbers
+function question(numb1,numb2){
 	var numbers = {};
 	numbers.number1 = numb1;
 	numbers.number2 = numb2;
@@ -13,6 +56,7 @@ function question(numb1,numb2){
 	return numbers;
 }
 
+// constructor object to get 3 random incorrect answers and 1 correct answer, each under value 10
 function Answer(corAns){
 
 	this.answer1 = Math.floor((Math.random() * 3) + 1);
@@ -33,69 +77,51 @@ function Answer(corAns){
 			this.answer3 = Math.floor((Math.random() * 5) + 1);
 		}while(corAns === this.answer3)
 	} 
+// correct answer variable
 	this.answer4 = corAns;
-Answer.prototype.runAnswer = function(){
-	$('.rtnAnswers').empty();
-	var ans1 = this.answer1;
-	var ans2 = this.answer2;
-	var ans3 = this.answer3;
-	var ans4 = this.answer4;
 
-	var arr = [ans1, ans2, ans3, ans4]
-	shuffle(arr);;
-	console.log(arr)
-	var i = 0;						
-	while(i < arr.length){
-	  $('.rtnAnswers').append('<li><input class="btn btn-default" type="submit" value= '+arr[i]+'></li>');
-	  i++;
+// create array of answers to send to DOM
+	Answer.prototype.runAnswer = function(){
+		$('.rtnAnswers').empty();
+		var ans1 = this.answer1;
+		var ans2 = this.answer2;
+		var ans3 = this.answer3;
+		var ans4 = this.answer4;
+
+		var arr = [ans1, ans2, ans3, ans4]
+		shuffle(arr);;
+		console.log(arr)
+		var i = 0;						
+			while(i < arr.length){
+		  	$('.rtnAnswers').append('<li><input class="btn btn-default" type="submit" value= '+arr[i]+'></li>');
+		  	i++;
+		}
 	}
 }
-}
 
+// create 2 random number from 1 to 5
 function randNum1To5(){
 	num1To5 = Math.floor((Math.random() * 5) + 1);
 	return num1To5;
 }
 
-
-$('.btn.btn-primary').on('click', function(){
-		var getQuestion = question(randNum1To5(),randNum1To5())
-		corAns = getQuestion.add;
-		var finalAnswer = new Answer(corAns);
-		$('.questions').append(getQuestion.getNumbs());
-		$('#answers').text(finalAnswer.runAnswer());
-});
-	score = 0;
-$(document).on("click",".btn.btn-default",function(){
-	var userInput = ($(this).attr('value'));
-	if(userInput == corAns){
-		score += 1;
-		$('.btn.btn-success').text(score);
-		//$('.modal').toggle();
-	
-	} else {
-		alert("incorrect anwer");
-	}
-
-});
-
-
+// shuffly answers of array - P.S. function below is not my code-:)
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
+ 	var currentIndex = array.length, temporaryValue, randomIndex ;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
 
-    // Pick a remaining element...
+// Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
 
-    // And swap it with the current element.
+// And swap it with the current element.
     temporaryValue = array[currentIndex];
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
-  }
+  	}
 
-  return array;
-}
+  		return array;
+	}
 });
