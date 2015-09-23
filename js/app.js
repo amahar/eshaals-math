@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 // initilize variables
 score = 0;
-counter = 0;	
+counter = 1;	
 
 // on click give me 2 questions:
 $('.btn.btn-primary').on('click', function(){
@@ -11,18 +11,24 @@ $('.btn.btn-primary').on('click', function(){
 
 // run two different classes to get random questions and its answers in each instance
 function newFunction(){
-	checkIfFinish();
-	$('.modal').modal('show');
-	var getQuestion = question(randNum1To5(),randNum1To5())
-	corAns = getQuestion.add;
-	var finalAnswer = new Answer(corAns);	
-	$('.questions').append(getQuestion.getNumbs());
-	$('#answers').text(finalAnswer.runAnswer());
+	if (counter == 4) {
+		alert("your final score is"+score+" ! Click Start play again");
+		$('.modal').modal('hide');
+		reset();
+		return false;
+	} else {
+		$('#counter').text(counter);
+		$('.modal').modal('show');
+		var getQuestion = question(randNum1To5(),randNum1To5())
+		corAns = getQuestion.add;
+		var finalAnswer = new Answer(corAns);	
+		$('.questions').append(getQuestion.getNumbs());
+		$('#answers').text(finalAnswer.runAnswer());
+	}
 }
 
 // retrieve answers from button values
-$(document).on("click",".btn.btn-default",function(event){
-	event.preventDefault();
+$(document).on("click",".btn.btn-default",function(){
 	counter += 1;
 	var userInput = ($(this).attr('value'));
 		if(userInput == corAns){
@@ -33,6 +39,19 @@ $(document).on("click",".btn.btn-default",function(event){
 		}	
 	newFunction();
 });
+
+// Start new addition
+$('.btn.btn-danger').on("click", function(){
+	reset();
+});
+
+function reset(){
+	score = 0;
+	$('.btn.btn-success').text(0);
+	counter = 1;
+	$('#counter').text(1);
+	$('.modal').modal('hide');
+}
 
 // Keep per game to 3 rounds and give user its total score
 function checkIfFinish(){
@@ -51,7 +70,7 @@ function question(numb1,numb2){
 	numbers.add = numb1 + numb2;
 	numbers.getNumbs = function(){
 		$('.questions').empty();
-		return "What is " +this.number1+ " + " +this.number2+ " ?";
+		return this.number1+ " + " +this.number2+ " = ?";
 	}
 	return numbers;
 }
