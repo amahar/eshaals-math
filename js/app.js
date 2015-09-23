@@ -4,6 +4,10 @@ $(document).ready(function(){
 score = 0;
 counter = 1;	
 
+$('.btn.btn-warning.btn-default.btn-block').on('click', function(){
+	$('.secondpage').css('display','block');
+});
+
 // on click give me 2 questions:
 $('.btn.btn-primary').on('click', function(){
 	newFunction();
@@ -28,7 +32,7 @@ function newFunction(){
 }
 
 // retrieve answers from button values
-$(document).on("click",".btn.btn-default",function(){
+$('.rtnAnswers').on("click",".btn.btn-default",function(){
 	counter += 1;
 	var userInput = ($(this).attr('value'));
 		if(userInput == corAns){

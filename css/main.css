@@ -75,7 +75,7 @@ to { -o-transform: rotate(356deg) scale(0.569) skew(34deg) translate(-6px); }
 	left: 0;
 	margin: 0;
 	z-index: 1000;
-	/*display: none;*/
+	display: none;
 }
 header h1{
 	font-family: welcomefont;
