@@ -33,33 +33,26 @@
 	<div class="container">
 		<div class="row">
 			<header>
-			<h1>Eshaal's Math</h1>
-				<nav>
-					<ul class="nav nav-pills">
-						<li><button type="button" class="btn btn-success">Score</button></li>
-						<li><button type="button" class="btn btn-danger">New Game</button></li>
-					</ul>
-				</nav>
-							<!-- Large modal -->
-<button type="button" class="btn btn-primary">Large modal</button>
-
-<div class="modal fade bs-example-modal-lg" data-toggle="model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <h6 >Question #<span id="counter"></span></h6>
-      <h2 class="questions"></h2>
-      <ul id ="answers" class="rtnAnswers">
-      </ul>
-    </div>
-  </div>
-</div>
-
+				<h1>Eshaal's Math</h1>
+					<nav>
+						<ul class="nav nav-pills">
+							<li><button type="button" class="btn btn-success">Score</button></li>
+							<li><button type="button" class="btn btn-danger">New Game</button></li>
+						</ul>
+					</nav>
 			</header>	
-
+			<div class ="buttonCenter"><button type="button" class="btn btn-primary">Start Game</button></div>
+			<div class="modal fade bs-example-modal-lg" data-toggle="model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<h6>Question #<span id="counter"></span></h6>
+						<h2 class="questions"></h2>
+						<ul id ="answers" class="rtnAnswers"></ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</section>
-<section class="questions">
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	

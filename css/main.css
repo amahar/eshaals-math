@@ -127,6 +127,11 @@ a {
 .modal-backdrop{
 	z-index: 0 !important;
 }
+.buttonCenter{
+	max-width: 11rem;
+	margin-left: auto;
+	margin-right: auto;
+}
 h6{
 	color: gainsboro !important;
 }
